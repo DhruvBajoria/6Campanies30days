@@ -1,0 +1,19 @@
+
+
+class Solution{
+    public:
+    string colName (long long int n)
+    {
+        string ans="";
+        while(n)
+        {
+            n--;
+            int r=n%26;
+            ans+=65+r;
+            n/=26;
+        }
+        reverse(ans.begin(),ans.end());
+        return ans;
+        // your code here
+    }
+};

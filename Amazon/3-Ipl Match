@@ -1,0 +1,30 @@
+class Solution {
+  public:
+    vector<int> max_of_subarrays(vector<int> arr, int n, int k) {
+        priority_queue<int>p;
+        priority_queue<int>help;
+        vector<int>v;
+        for(int i=0;i<k;i++)
+        {
+            p.push(arr[i]);
+        }
+        v.push_back(p.top());
+        for(int i=k;i<n;i++)
+        {
+            if(arr[i-k]==p.top())
+            p.pop();
+            else
+            help.push(arr[i-k]);
+            while(help.empty()==false&&help.top()==p.top())
+            {
+                help.pop();
+                p.pop();
+            }
+            p.push(arr[i]);
+            v.push_back(p.top());
+        }
+        return v;
+        // your code here
+    }
+};
+
